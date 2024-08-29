@@ -92,6 +92,13 @@ DATABASES = {
 }
 
 
+# CSRF_TRUSTED_ORIGINS specifies a list of trusted domains that can be used as origins for cross-site request forgery (CSRF) protection.
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
