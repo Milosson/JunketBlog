@@ -48,4 +48,4 @@ class Comment(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, related_name="comment_tags") # Testing optional tagging!
 
     def __str__(self):
-        return f'Comment by {self.auther} on {self.post}'
+        return f'Comment by {self.author} on {self.post}'
