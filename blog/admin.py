@@ -13,3 +13,4 @@ class TagAdmin(admin.ModelAdmin):
 # Register the models with their custom admin classes
 admin.site.register(TravelPost, TravelPostAdmin)
 admin.site.register(Tag, TagAdmin)
+

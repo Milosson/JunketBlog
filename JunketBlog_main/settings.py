@@ -33,6 +33,10 @@ ALLOWED_HOSTS = [ '8000-milosson-junketblog-ywf6d91d9c8.ws-eu115.gitpod.io',
 '.herokuapp.com'
  ]
 
+# Considering to use Pillow until i setup Cloudinary API.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Application definition
 

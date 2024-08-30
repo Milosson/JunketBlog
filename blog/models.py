@@ -18,7 +18,7 @@ class TravelPost(models.Model):
     updated_on = models.DateTimeField(auto_now=True)  # Timestamp for the last update of the post
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)  # Status of the post (draft or published)
     excerpt = models.TextField(blank=True) 
-    # image = models.ImageField(upload_to='travel_images/', null=True, blank=True)  # User-uploaded image for the post
+   # image = models.ImageField(upload_to='images/', null=True, blank=True)  # User-uploaded image for the post
     location = models.CharField(max_length=100)  # Location related to the travel post
     travel_date = models.DateField()  # Date of the travel
     tags = models.ManyToManyField('Tag', blank=True)  # Tags to categorize the travel post
