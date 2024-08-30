@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TravelPost, Tag  # Import the TravelPost and Tag models
+from .models import TravelPost, Tag, Comment # Import the TravelPost and Tag models
 
 class TravelPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_on', 'status')  # Display these fields in the list view
@@ -13,4 +13,4 @@ class TagAdmin(admin.ModelAdmin):
 # Register the models with their custom admin classes
 admin.site.register(TravelPost, TravelPostAdmin)
 admin.site.register(Tag, TagAdmin)
-
+admin.site.register(Comment)

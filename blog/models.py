@@ -35,3 +35,17 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name  # Return the name of the tag as its string representation
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        TravelPost, on_delete=models.CASCADE, related_name="comments") # Linking the TravelPost
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter") # Linking to User
+    body = models.TextField() # Text content of the comment
+    approved = models.BooleanField(default=False) # Approval status
+    created_on = models.DateTimeField(auto_now_add=True) # Timestamp of creation
+    tags = models.ManyToManyField(Tag, blank=True, related_name="comment_tags") # Testing optional tagging!
+
+    def __str__(self):
+        return f'Comment by {self.auther} on {self.post}'
