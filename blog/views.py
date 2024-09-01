@@ -7,5 +7,5 @@ def post_detail(request, slug):
 
 
 def post_list(request):
-    posts = TravelPost.objects.all()  # Fetch all TravelPost objects
+    posts = TravelPost.objects.filter(status=1).order_by('-created_on')  # Fetch all TravelPost objects
     return render(request, 'blog/travelpost_list.html', {'posts': posts})  # Render the list template
