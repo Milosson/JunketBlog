@@ -28,7 +28,7 @@ class TravelPost(models.Model):
         ordering = ['-created_on']  # Order posts by creation date, newest first
 
     def __str__(self):
-        return self.title  # Return the title as the string representation of the post
+        return f"{self.title} | written by {self.author}"  # Return the title as the string representation of the post
 
 class Tag(models.Model):
     name = models.CharField(max_length=30, unique=True)  # Unique name for the tag

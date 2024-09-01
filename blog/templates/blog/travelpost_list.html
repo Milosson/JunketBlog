@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog - Posts</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Blog Posts</h1>
+        {% if posts %}
+            {% for post in posts %}
+            <div class="post-summary">
+                <h2>
+                    <a href="{% url 'post_detail' post.slug %}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p>by <strong>{{ post.author.username }}</strong> on {{ post.created_on|date:"F d, Y" }}</p>
+                <p>Location: {{ post.location }}</p>
+                <p>Travel Date: {{ post.travel_date|date:"F d, Y" }}</p>
+
+                {% if post.excerpt %}
+                    <p>{{ post.excerpt }}</p>
+                {% else %}
+                    <p>{{ post.content|truncatewords:30 }}</p>
+                {% endif %}
+
+                <p><strong>Tags:</strong>
+                {% for tag in post.tags.all %}
+                    <span>{{ tag.name }}</span>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+
+                <p><a href="{% url 'post_detail' post.slug %}">Read more...</a></p>
+            </div>
+            <hr>
+            {% endfor %}
+        {% else %}
+            <p>No posts available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
