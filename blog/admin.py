@@ -1,16 +1,25 @@
 from django.contrib import admin
-from .models import TravelPost, Tag, Comment # Import the TravelPost and Tag models
+from .models import TravelPost, Tag, Comment
+from django_summernote.admin import SummernoteModelAdmin
 
-class TravelPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'created_on', 'status')  # Display these fields in the list view
-    prepopulated_fields = {'slug': ('title',)}  # Automatically fill the slug field based on the title
-    list_filter = ('status', 'tags')  # Add filters for status and tags in the sidebar
-    search_fields = ('title', 'content')  # Add search functionality for title and content
+# Custom admin class for TravelPost
+@admin.register(TravelPost)
+class TravelPostAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'slug', 'status', 'created_on')  # Added created_on to display
+    search_fields = ['title', 'content']  # Allow searching by title and content
+    list_filter = ('status', 'tags')  # Filter by status and tags
+    prepopulated_fields = {'slug': ('title',)}  # Auto-populate slug
+    summernote_fields = ('content',)  # Enable rich text editing for content
+    ordering = ('-created_on',)  # Order posts by created_on date
 
+# Admin class for Tag
+@admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('name',)  # Display the name of the tag in the list view
+    list_display = ('name',)  # Display tag name
 
-# Register the models with their custom admin classes
-admin.site.register(TravelPost, TravelPostAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(Comment)
+# Admin class for Comment
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('post', 'author', 'created_on', 'approved')  # Adjust fields as necessary
+    list_filter = ('approved',)
+    search_fields = ('author', 'content')  # Allow searching by author and content
