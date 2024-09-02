@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }} - Travel Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
 <body>
     <div class="container">
@@ -19,7 +21,7 @@
         {% endfor %}
         </p>
         
-        <p><a href="{% url 'post_list' %}">Back to all posts</a></p>  <!-- Link to go back to post list -->
+        <p><a href="{% url 'home' %}">Back to all posts</a></p>  <!-- Link to go back to post list -->
     </div>
 </body>
 </html>
