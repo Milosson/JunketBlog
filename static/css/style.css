@@ -71,11 +71,14 @@ body {
 
 /* Author Styling */
 .author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+    color: rgba(31, 153, 6, 0.5);
+    margin: 4px 0; /* Margin for spacing */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    font-weight: bold; /* Bold text for visibility */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    position: relative; /* Position relative for pseudo-element */
 }
-
 /* Masthead Styles */
 .masthead {
     margin-top: 10px;
