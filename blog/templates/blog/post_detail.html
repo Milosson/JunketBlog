@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -13,6 +15,9 @@
 
     <!-- Bootstrap CSS from CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
 
 </head>
@@ -21,7 +26,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'home' %}">Junket<span class="text-danger">B</span>log</a>
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+                <span class="logo-gradient">JunketBlog</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +51,7 @@
             <p>by <strong>{{ post.author.username }}</strong> on {{ post.created_on|date:"F d, Y" }}</p>
             <p>Location: {{ post.location }}</p>
             <p>Travel Date: {{ post.travel_date|date:"F d, Y" }}</p>
-            <p>{{ post.content }}</p>  <!-- Full content of the post -->
+            <p>{{ post.content|safe }}</p>  <!-- Full content of the post -->
             
             <p><strong>Tags:</strong>
             {% for tag in post.tags.all %}

@@ -205,3 +205,27 @@ body {
     background-color: #23BBBB;  
     transform: scale(1.1);
 }
+
+
+.logo-gradient {
+    font-family: 'Montserrat', sans-serif; /* Consistent font */
+    font-size: 2.5rem; /* Font size */
+    font-weight: bold; /* Bold for emphasis */
+    background: linear-gradient(90deg, #E84610, #188181, #23BBBB); /* Extended gradient */
+    
+    /* Vendor Prefixes for Compatibility */
+    -webkit-background-clip: text; /* Chrome, Safari 3+ */
+    background-clip: text; /* Standard property */
+    
+    -webkit-text-fill-color: transparent; /* Chrome, Safari */
+    text-fill-color: transparent; /* Standard property (not widely supported yet) */
+    
+    transition: transform 0.3s ease, letter-spacing 0.3s ease; /* Added transition for letter spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.logo-gradient:hover {
+    transform: scale(1.1) rotate(2deg); /* Slight rotation on hover */
+    letter-spacing: 2px; /* Increase letter spacing on hover */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
