@@ -71,13 +71,16 @@ body {
 
 /* Author Styling */
 .author {
-    color: rgba(31, 153, 6, 0.5);
+    background: linear-gradient(90deg, #E84610, #188181, #23BBBB); /* Extended gradient */
+    background-size: 30% 100%; /* Adjust height of the gradient */
+    background-repeat: no-repeat; /* Prevent the gradient from repeating */
+    border-radius: 50%;
     margin: 4px 0; /* Margin for spacing */
     text-transform: uppercase; /* Uppercase for emphasis */
     font-weight: bold; /* Bold text for visibility */
     font-size: 0.9rem; /* Slightly smaller font size */
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
-    position: relative; /* Position relative for pseudo-element */
+    transition: color 0.3s ease, transform 0.3s ease; 
+    position: relative; 
 }
 /* Masthead Styles */
 .masthead {
@@ -196,7 +199,7 @@ body {
 }
 
 .page-link {
-    background-color: #E84610;  
+    background: linear-gradient(90deg, #E84610, #188181, #23BBBB); /* Extended gradient */
     color: white;  
     border-radius: 20px;  
     padding: 10px;  
