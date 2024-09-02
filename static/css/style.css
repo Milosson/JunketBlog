@@ -235,3 +235,8 @@ body {
     letter-spacing: 2px; /* Increase letter spacing on hover */
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
 }
+
+.scale {
+    width: 100%;
+    height: auto;
+}
