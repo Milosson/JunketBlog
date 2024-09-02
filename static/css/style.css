@@ -1,0 +1,207 @@
+/* Global Styles */
+body {
+    background: linear-gradient(to right, #F9FAFC, #E8F1F4);
+    font-family: 'Lato', sans-serif;  
+    line-height: 1.6;
+}
+
+/* Brand Styles */
+.brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4A4A4F;
+}
+
+/* Color Classes */
+.red-o {
+    color: #E84610;
+}
+
+.thin {
+    font-weight: 300;
+}
+
+/* Background Styles */
+.light-bg {
+    background-color: #fff;
+    border-radius: 8px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-bg {
+    background-color: #445261;
+    color: white;  
+}
+
+.main-bg {
+    background-color: #F9FAFC;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    background-color: transparent;
+    border-radius: 8px;  
+    overflow: hidden;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Container */
+.image-container {
+    position: relative;
+    overflow: hidden;  
+    border-radius: 8px;  
+}
+
+/* Flash Element */
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    padding: 5px 10px;
+    border-radius: 20px;  
+    background-color: rgba(24, 130, 129, 0.8);
+}
+
+/* Author Styling */
+.author {
+    color: white;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+/* Masthead Styles */
+.masthead {
+    margin-top: 10px;
+    height: 33vh;
+    width: 100%;
+    overflow: hidden;  
+}
+
+.masthead-text {
+    background-color: rgba(68, 82, 97, 0.8);  
+    color: white;
+    padding: 20px;  
+    text-align: center;  
+}
+
+/* Post Links */
+.post-link {
+    text-decoration: none;
+    color: #445261;
+    transition: all 0.3s ease;
+}
+
+.post-link:hover {
+    color: #E84610;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Post Title and Subtitle */
+.post-title {
+    margin: 10% 0 5%;
+}
+
+.post-subtitle {
+    color: lightgray;
+}
+
+/* Button Styles */
+.btn-signup,
+.btn-edit {
+    background-color: #188181;
+    color: #fff;
+    border-radius: 20px;  
+    padding: 10px 20px;  
+    border: none;  
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-signup:hover,
+.btn-edit:hover {
+    background-color: #FFD700;  
+    color: #445261;  
+    transform: translateY(-2px);
+}
+
+/* Links */
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+    transition: color 0.3s ease;  
+}
+
+.link:hover {
+    color: #445261;
+    text-decoration: underline;
+}
+
+/* Like and Delete Buttons */
+.btn-like {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
+
+.btn-delete {
+    color: #fff;
+    background: #E84610;
+    border-radius: 20px;  
+    padding: 5px 10px;  
+}
+
+.btn-like:hover,
+.btn-delete:hover {
+    opacity: 0.8;  
+}
+
+/* Tag Styles */
+.tag {
+    display: inline-block;
+    background-color: #E84610;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;  
+    margin-right: 5px;  
+    transition: transform 0.3s ease; 
+}
+
+.tag:hover {
+    transform: scale(1.05);
+}
+
+/* Miscellaneous Styles */
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
+/* Pagination Styles */
+.pagination {
+    margin: 20px 0;  
+}
+
+.page-link {
+    background-color: #E84610;  
+    color: white;  
+    border-radius: 20px;  
+    padding: 10px;  
+    margin: 0 5px;  
+    transition: transform 0.3s ease; 
+}
+
+.page-link:hover {
+    background-color: #23BBBB;  
+    transform: scale(1.1);
+}

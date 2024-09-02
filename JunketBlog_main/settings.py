@@ -150,7 +150,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Optional: Directories to look for static files (your custom static files)
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # This is where you can add your own static files
+    os.path.join(BASE_DIR, 'static')
 ]
 
 
