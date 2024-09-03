@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Log Out of Junket Blog" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-5 offset-md-2">
+            <h3 class="text-center">{% trans "Log Out" %}</h3>
+            <p class="text-center">{% trans 'Are you sure you want to log out? We hope to see you again soon!' %}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <button class="btn btn-danger btn-block" type="submit">{% trans 'Log Out' %}</button>
+                    </form>
+                    <a href="{% url 'home' %}" class="btn btn-secondary mt-2">{% trans 'Cancel' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
