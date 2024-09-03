@@ -1,11 +1,28 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
-from .models import TravelPost
+from .models import TravelPost, Comment
 
 def post_detail(request, slug):
     post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the TravelPost by slug
-    return render(request, 'blog/post_detail.html', {'post': post})  # Render the detail template
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(approved=True).count()
 
+    # Automatically approve comments that meet the condition
+    for comment in comments:
+        if comment.is_auto_approved() and not comment.approved:
+            comment.approved = True
+            comment.save()
+
+    return render(
+        request, 
+        'blog/post_detail.html', 
+        {
+            'post': post,
+            'comments': comments,
+            'comment_count': comment_count,
+            
+            },
+            )  
 
 def post_list(request):
     posts = TravelPost.objects.filter(status=1).order_by('-created_on')  # Fetch all TravelPost objects
