@@ -253,3 +253,8 @@ body {
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.bg-w {
+    background: linear-gradient(90deg, rgba(232, 70, 16, 0.1), rgba(24, 130, 129, 0.1), rgba(35, 187, 187, 0.1));
+
+}

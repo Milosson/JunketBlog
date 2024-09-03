@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import TravelPost, Comment
 from .forms import CommentForm
 
@@ -17,6 +18,10 @@ def post_detail(request, slug):
             comment.author = request.user
             comment.post = post
             comment.save()  # Save the comment, which may auto-approve
+            messages.add_message(
+        request, messages.SUCCESS,
+        'Comment submitted and awaiting approval'
+    )
             return redirect('post_detail', slug=post.slug)
 
     # Manually approve comments that meet the condition
@@ -41,4 +46,9 @@ def post_list(request):
     paginator = Paginator(posts, 6)  # Show 6 posts per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'blog/index.html', {'posts': page_obj.object_list, 'is_paginated': page_obj.has_other_pages(), 'page_obj': page_obj})
+
+    return render(request, 'blog/index.html', {
+        'posts': page_obj.object_list, 
+        'is_paginated': page_obj.has_other_pages(), 
+        'page_obj': page_obj,
+    })

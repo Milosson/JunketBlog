@@ -45,6 +45,18 @@
     <!-- Main Content -->
     <main class="flex-shrink-0">
         <div class="container py-5">
+            <!-- Displaying messages -->
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    {% for message in messages %}
+                    <div class="alert alert-dismissible fade show {{ message.tags }}" role="alert">
+                        {{ message|safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
             <h1>{{ post.title }}</h1>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <img src="{% static 'images/junketimage.jpg' %}" class="scale" alt="placeholder">
@@ -79,9 +91,9 @@
                     <h3 class="mb-3">Comments:</h3>
                     <div class="card-body">
                         {% if comments %}
-                            <!--  for loop inside the empty control tags to iterate through each comment in comments -->
+                            <!-- Loop through each comment -->
                             {% for comment in comments %}
-                            <div class="comment p-3 mb-3 border rounded {% if comment.approved %}bg-light{% else %}bg-warning{% endif %}">
+                            <div class="comment p-3 mb-3 border rounded {% if comment.approved %}bg-light{% else %}bg-w{% endif %}">
                                 <p class="font-weight-bold mb-1">
                                     {{ comment.author }}
                                     <span class="font-weight-normal text-muted ml-2">{{ comment.created_on|date:"M d, Y H:i" }}</span>
