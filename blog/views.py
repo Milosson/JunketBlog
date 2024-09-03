@@ -1,32 +1,40 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import TravelPost, Comment
 from .forms import CommentForm
-
 
 def post_detail(request, slug):
     post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the TravelPost by slug
     comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()
+    comment_count = comments.filter(approved=True).count()
     comment_form = CommentForm()
 
-    # Automatically approve comments that meet the condition
+    # Handle comment submission
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()  # Save the comment, which may auto-approve
+            return redirect('post_detail', slug=post.slug)
+
+    # Manually approve comments that meet the condition
     for comment in comments:
         if comment.is_auto_approved() and not comment.approved:
             comment.approved = True
             comment.save()
 
     return render(
-        request, 
-        'blog/post_detail.html', 
+        request,
+        'blog/post_detail.html',
         {
             'post': post,
             'comments': comments,
             'comment_count': comment_count,
             'comment_form': comment_form,
-            
-            },
-        )  
+        },
+    )
 
 def post_list(request):
     posts = TravelPost.objects.filter(status=1).order_by('-created_on')  # Fetch all TravelPost objects
