@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 from datetime import timedelta
 
@@ -12,7 +13,7 @@ STATUS_CHOICES = (
 
 class TravelPost(models.Model):
     title = models.CharField(max_length=200, unique=True)  # Title of the travel post
-    slug = models.SlugField(max_length=200, unique=True)  # Slug for a URL-friendly representation
+    slug = models.SlugField(max_length=200, unique=True, blank=True)  # Slug for a URL-friendly representation
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE, 
@@ -28,12 +29,24 @@ class TravelPost(models.Model):
     travel_date = models.DateField()  # Date of the travel
     tags = models.ManyToManyField('Tag', blank=True)  # Tags to categorize the travel post
     
-
     class Meta:
         ordering = ['-created_on']  # Order posts by creation date, newest first
 
     def __str__(self):
         return f"{self.title} | written by {self.author}"  # Return the title as the string representation of the post
+
+    def save(self, *args, **kwargs):
+        if not self.slug:  # Only set the slug if it hasn't been set
+            # Generate a slug from the title
+            self.slug = slugify(self.title)
+            original_slug = self.slug
+            counter = 1
+            # Ensure the slug is unique
+            while TravelPost.objects.filter(slug=self.slug).exists():
+                self.slug = f"{original_slug}-{counter}"  # Append a counter to the slug
+                counter += 1
+        super().save(*args, **kwargs)  # Call the original save method
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=30, unique=True)  # Unique name for the tag

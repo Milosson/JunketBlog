@@ -48,7 +48,6 @@ class TravelPostForm(forms.ModelForm):
         model = TravelPost
         fields = [
             'title',
-            'slug',
             'featured_image',
             'content',
             'location',
