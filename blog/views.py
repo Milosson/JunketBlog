@@ -132,3 +132,18 @@ def create_travel_post(request):
         form = TravelPostForm()
 
     return render(request, 'blog/create_travel_post.html', {'form': form})
+
+@login_required
+def edit_travel_post(request, slug):
+    post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the TravelPost by slug
+
+    if request.method == 'POST':
+        form = TravelPostForm(request.POST, request.FILES, instance=post)  # Include FILES for image upload
+        if form.is_valid():
+            form.save()  # Save the updated post
+            messages.success(request, 'Post updated successfully!')
+            return redirect('post_detail', slug=post.slug)  # Redirect to the updated post
+    else:
+        form = TravelPostForm(instance=post)  # Prepopulate form with the current post data
+
+    return render(request, 'blog/edit_travel_post.html', {'form': form, 'post': post})
