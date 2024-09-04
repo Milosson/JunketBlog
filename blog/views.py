@@ -101,3 +101,18 @@ def login_view(request):
     if request.method == 'POST':
         pass
     return render(request, 'login.html')
+
+
+def comment_delete(request, slug, comment_id):
+    """
+    View to delete comments
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully!')
+    else:
+        messages.error(request, 'You are not allowed to delete this comment!')
+
+    return redirect('post_detail', slug=slug)

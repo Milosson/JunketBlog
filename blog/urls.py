@@ -10,4 +10,8 @@ urlpatterns = [
     path('contact/', contact_us, name='contact_us'),
     path('contact/success/', contact_success, name='contact_success'),
     path('post/<slug:slug>/edit-comment/<int:comment_id>/', comment_edit, name='comment_edit'),  # New URL for editing comments
+    path('post/<slug:slug>/delete_comment/<int:comment_id>/',
+      views.comment_delete, name='comment_delete')
+
+
 ]
