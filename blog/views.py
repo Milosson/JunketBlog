@@ -1,12 +1,14 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import TravelPost, Comment
 from .forms import CommentForm
 from .forms import ContactForm
 
+@login_required 
 def post_detail(request, slug):
     post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the TravelPost by slug
     comments = post.comments.all().order_by("-created_on")
@@ -93,3 +95,9 @@ def comment_edit(request, slug, comment_id):
         comment_form = CommentForm(instance=comment)  # Prepopulate form for GET request
 
     return render(request, 'blog/comment_edit.html', {'form': comment_form, 'post': post, 'comment': comment})
+
+@login_required
+def login_view(request):
+    if request.method == 'POST':
+        pass
+    return render(request, 'login.html')
