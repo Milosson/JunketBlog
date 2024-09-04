@@ -60,6 +60,8 @@ def contact_us(request):
         if form.is_valid():
             form.save()
             return redirect('contact_success')  # Redirect to a success page
+        else: 
+            messages.error(request, "There was an error with your submission, Please correct the errors below.")
     else:
         form = ContactForm()
 

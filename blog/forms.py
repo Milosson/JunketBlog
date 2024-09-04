@@ -29,3 +29,14 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactRequest
         fields = ['name', 'email', 'message']
+        error_messages = {
+            'name': {
+                'required': '',
+            },
+            'email': {
+                'required': '',
+            },
+            'message': {
+                'required': '',
+            },
+        }
