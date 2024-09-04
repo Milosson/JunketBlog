@@ -3,6 +3,7 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'contact_us' as contact_url %}  <!-- Added contact URL -->
 
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -42,6 +43,9 @@
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
                     <!-- Add more navigation items -->
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == contact_url %}active{% endif %}" href="{% url 'contact_us' %}">Contact Us</a>
+                    </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
@@ -59,25 +63,26 @@
             </div>
         </div>
     </nav>
-<!-- displaying Django messages -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            {% for message in messages %}
-            <div class="alert alert-dismissible fade show {{ message.tags }}" role="alert">
-                {{ message|safe }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    <!-- displaying Django messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert alert-dismissible fade show {{ message.tags }}" role="alert">
+                    {{ message|safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
 
     <!-- Main Content -->
     <main class="flex-shrink-0">
         <div class="container py-5">
             {% block content %}
-            <!-- Page content  here -->
+            <!-- Page content here -->
             {% endblock content %}
         </div>
     </main>
@@ -93,6 +98,7 @@
                 <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
             </p>
+            <a href="{% url 'contact_us' %}" class="btn btn-secondary mt-3">Contact Us</a>
         </div>
     </footer>
 

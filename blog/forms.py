@@ -2,6 +2,7 @@ from django import forms
 from .models import Comment
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field, Row, Column
+from .models import ContactRequest
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -20,6 +21,11 @@ class CommentForm(forms.ModelForm):
             Field('tags', css_class='form-control', placeholder='Select tags (optional)'),
         )
 
-        # Optional: Add custom styles or attributes
+       
         self.fields['body'].widget.attrs.update({'rows': '4'})
         self.fields['tags'].widget.attrs.update({'class': 'selectpicker', 'data-live-search': 'true'})
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactRequest
+        fields = ['name', 'email', 'message']

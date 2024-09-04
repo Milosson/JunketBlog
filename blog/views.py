@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import TravelPost, Comment
 from .forms import CommentForm
+from .forms import ContactForm
 
 def post_detail(request, slug):
     post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the TravelPost by slug
@@ -52,3 +53,17 @@ def post_list(request):
         'is_paginated': page_obj.has_other_pages(), 
         'page_obj': page_obj,
     })
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contact_success')  # Redirect to a success page
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+
+def contact_success(request):
+    return render(request, 'contact_success.html')

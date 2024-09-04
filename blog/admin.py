@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import TravelPost, Tag, Comment
 from django_summernote.admin import SummernoteModelAdmin
+from .models import ContactRequest
 
 # Custom admin class for TravelPost
 @admin.register(TravelPost)
@@ -20,6 +21,11 @@ class TagAdmin(admin.ModelAdmin):
 # Admin class for Comment
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post', 'author', 'created_on', 'approved')  # Adjust fields as necessary
+    list_display = ('post', 'author', 'body', 'created_on', 'approved')  # display for admin
     list_filter = ('approved',)
     search_fields = ('author', 'content')  # Allow searching by author and content
+
+# Admin class for Contact
+@admin.register(ContactRequest)
+class ContactRequestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'message', 'created_on')

@@ -63,3 +63,14 @@ class Comment(models.Model):
         if self.is_auto_approved():
             self.approved = True  # Automatically approve if the condition is met
         super().save(*args, **kwargs)  # Call the original save method
+
+
+class ContactRequest(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'Contact Request from {self.name}'
