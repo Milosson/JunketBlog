@@ -7,6 +7,7 @@ from django.urls import reverse
 from .models import TravelPost, Comment
 from .forms import CommentForm
 from .forms import ContactForm
+from .forms import TravelPostForm
 
 @login_required 
 def post_detail(request, slug):
@@ -116,3 +117,18 @@ def comment_delete(request, slug, comment_id):
         messages.error(request, 'You are not allowed to delete this comment!')
 
     return redirect('post_detail', slug=slug)
+
+
+@login_required
+def create_travel_post(request):
+    if request.method == 'POST':
+        form = TravelPostForm(request.POST, request.FILES)  # Include FILES for image upload
+        if form.is_valid():
+            travel_post = form.save(commit=False)  # Do not save to DB yet
+            travel_post.author = request.user  # Set the author to the logged-in user
+            travel_post.save()  # Save the travel post
+            return redirect('post_list')  # Redirect to the post list page or any other page
+    else:
+        form = TravelPostForm()
+
+    return render(request, 'blog/create_travel_post.html', {'form': form})

@@ -1,8 +1,10 @@
 from django import forms
 from .models import Comment
+from .models import TravelPost
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field, Row, Column
 from .models import ContactRequest
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -40,3 +42,16 @@ class ContactForm(forms.ModelForm):
                 'required': '',
             },
         }
+
+class TravelPostForm(forms.ModelForm):
+    class Meta:
+        model = TravelPost
+        fields = [
+            'title',
+            'slug',
+            'featured_image',
+            'content',
+            'location',
+            'travel_date',
+            'tags',
+    ]
