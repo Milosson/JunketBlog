@@ -74,7 +74,7 @@ def contact_us(request):
 def contact_success(request):
     return render(request, 'contact_success.html')
 
-
+@login_required
 def comment_edit(request, slug, comment_id):
     """
     View to edit comments.
@@ -102,7 +102,7 @@ def login_view(request):
         pass
     return render(request, 'login.html')
 
-
+@login_required
 def comment_delete(request, slug, comment_id):
     """
     View to delete comments
