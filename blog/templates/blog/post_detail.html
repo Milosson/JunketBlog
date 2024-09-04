@@ -93,21 +93,25 @@
                         {% if comments %}
                             <!-- Loop through each comment -->
                             {% for comment in comments %}
-                            <div class="comment p-3 mb-3 border rounded {% if comment.approved %}bg-light{% else %}bg-w{% endif %}">
-                                <p class="font-weight-bold mb-1">
-                                    {{ comment.author }}
-                                    <span class="font-weight-normal text-muted ml-2">{{ comment.created_on|date:"M d, Y H:i" }}</span>
-                                </p>
-                                <div id="comment{{ comment.id }}" class="comment-body">
-                                    {{ comment.body|linebreaks }}
-                                </div>
-                                {% if not comment.approved and comment.author == user %}
-                                <p class="approval text-danger mt-2">
-                                    This comment is awaiting approval
-                                </p>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
+    <div class="comment p-3 mb-3 border rounded {% if comment.approved %}bg-light{% else %}bg-w{% endif %}">
+        <p class="font-weight-bold mb-1">
+            {{ comment.author }}
+            <span class="font-weight-normal text-muted ml-2">{{ comment.created_on|date:"M d, Y H:i" }}</span>
+        </p>
+        <div id="comment{{ comment.id }}" class="comment-body">
+            {{ comment.body|linebreaks }}
+        </div>
+        {% if not comment.approved and comment.author == user %}
+            <p class="approval text-danger mt-2">
+                This comment is awaiting approval
+            </p>
+        {% endif %}
+        {% if user.is_authenticated and comment.author == user %}
+            <button type="button" class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+        {% endif %}
+    </div>
+{% endfor %}
+
                         {% else %}
                             <p class="text-muted">No comments yet. Be the first to share your thoughts!</p>
                         {% endif %}

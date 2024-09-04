@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import TravelPost, Comment
 from .forms import CommentForm
 from .forms import ContactForm
@@ -69,3 +71,25 @@ def contact_us(request):
 
 def contact_success(request):
     return render(request, 'contact_success.html')
+
+
+def comment_edit(request, slug, comment_id):
+    """
+    View to edit comments.
+    """
+    post = get_object_or_404(TravelPost, slug=slug)  # Retrieve the associated post by slug
+    comment = get_object_or_404(Comment, pk=comment_id)  # Retrieve the comment by ID
+
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST, instance=comment)  # Prepopulate form with comment data
+        if comment_form.is_valid() and comment.author == request.user:  # Ensure the user is the author
+            comment_form.save()  # Save the updated comment
+            messages.add_message(request, messages.SUCCESS, 'Comment updated successfully!')
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))  # Redirect to post detail page
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+
+    else:
+        comment_form = CommentForm(instance=comment)  # Prepopulate form for GET request
+
+    return render(request, 'blog/comment_edit.html', {'form': comment_form, 'post': post, 'comment': comment})
