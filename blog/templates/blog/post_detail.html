@@ -59,8 +59,9 @@
 
             <h1>{{ post.title }}</h1>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/junketimage.jpg' %}" class="scale" alt="placeholder">
+                <img src="{{ post.featured_image.url }}" class="scale" alt="{{ post.title }}">
             </div>
+            
             <p>by <strong>{{ post.author.username }}</strong> on {{ post.created_on|date:"F d, Y" }}</p>
             <p>Location: {{ post.location }}</p>
             <p>Travel Date: {{ post.travel_date|date:"F d, Y" }}</p>

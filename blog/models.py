@@ -28,7 +28,7 @@ class TravelPost(models.Model):
     location = models.CharField(max_length=100)  # Location related to the travel post
     travel_date = models.DateField()  # Date of the travel
     tags = models.ManyToManyField('Tag', blank=True)  # Tags to categorize the travel post
-    
+
     class Meta:
         ordering = ['-created_on']  # Order posts by creation date, newest first
 
