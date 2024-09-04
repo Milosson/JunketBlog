@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 from datetime import timedelta
 
 # Status choices for TravelPost
@@ -16,7 +17,8 @@ class TravelPost(models.Model):
         User,
         on_delete=models.CASCADE, 
         related_name="travel_posts"  # Author of the post
-    ) 
+    )
+    featured_image = CloudinaryField('image', default='placeholder')
     content = models.TextField()  # Main content of the travel post
     created_on = models.DateTimeField(auto_now_add=True)  # Timestamp for when the post was created
     updated_on = models.DateTimeField(auto_now=True)  # Timestamp for the last update of the post
@@ -25,6 +27,7 @@ class TravelPost(models.Model):
     location = models.CharField(max_length=100)  # Location related to the travel post
     travel_date = models.DateField()  # Date of the travel
     tags = models.ManyToManyField('Tag', blank=True)  # Tags to categorize the travel post
+    
 
     class Meta:
         ordering = ['-created_on']  # Order posts by creation date, newest first
