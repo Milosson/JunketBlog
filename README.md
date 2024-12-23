@@ -208,6 +208,89 @@ While this approach deviated from a traditional Agile process, using user storie
 
 </details>
 
+---
+# Manual Test Cases for User Stories
+
+## User Story: Create a Travel Post (#1)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Create a travel post     | The post is saved as a draft, and the user is redirected to the post list page.                      | Logged in, navigated to "Create Post", filled in the form with valid data, and clicked submit. | Works as expected     | N/A     |
+
+---
+
+## User Story: Edit a Travel Post (#2)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Edit a travel post       | Changes are saved and reflected on the post detail page.                                            | Logged in, navigated to "Edit Post", updated data in the form, and clicked save.              | Works as expected     | N/A     |
+
+---
+
+## User Story: View a List of Travel Posts (#3)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| View posts list          | Posts are displayed with title, featured image, excerpt, and travel date.                           | As a guest and logged-in user, navigated to the post list and browsed pages.                  | Works as expected     | N/A     |
+
+---
+
+## User Story: View a Single Travel Post (#4)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| View single post         | Post is displayed with details, approved comments, and a comment form for logged-in users.           | Clicked on a post from the list to view its details.                                           | Works as expected     | N/A     |
+
+---
+
+## User Story: Add a Comment to a Travel Post (#5)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Add a comment            | A success message is shown, indicating the comment is awaiting approval.                            | Logged in, navigated to a post, added a comment, and clicked submit.                          | Works as expected     | N/A     |
+
+---
+
+## User Story: Auto-Approve Comments (#6)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Auto-approve comments    | Comments within the last hour are auto-approved and displayed.                                       | Admin verified the auto-approval of recent comments.                                           | Works as expected     | N/A     |
+
+---
+
+## User Story: Edit a Comment (#7)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Edit a comment           | Comment is updated, and a success message is shown.                                                 | Logged in, navigated to the comment, edited content, and clicked save.                        | Works as expected     | N/A     |
+
+---
+
+## User Story: Delete a Comment (#8)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Delete a comment         | Comment is removed, and a success message is displayed.                                             | Logged in, navigated to the comment, clicked delete, and confirmed the action.                | Works as expected     | N/A     |
+
+---
+
+## User Story: Submit a Contact Request (#9)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Submit a contact request | Request is saved, and the user is redirected to a success page.                                      | Filled out the contact form with valid data and clicked submit.                                | Works as expected     | N/A     |
+
+---
+
+## User Story: User Login (#10)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Log in                   | User is redirected to the home page or the previous page.                                            | Entered valid credentials in the login form and clicked submit.                                | Works as expected     | N/A     |
+
+---
+
+## User Story: Access Control (#11)
+| **Goal**                 | **Expected Result**                                                                                  | **Testing**                                                                                     | **Result**            | **Fix** |
+|--------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------------------|---------|
+| Restrict access          | Unauthorized users are redirected to the login page when trying to access restricted features.       | Tried to create a post or comment as a guest; successfully redirected to the login page.      | Works as expected     | N/A     |
+
+---
+
+
+---
+
 ## Database Diagram
 
 ![ER Diagram](https://i.imgur.com/NTatVUj.jpeg)
