@@ -4,6 +4,27 @@
 JunketBlog is a blog web app developed using the Django framework and other modern technologies. It forms a crucial part of my Portfolio Project 4 for Code Institute.
 With that said..... let me tell you the story! ⬇️
 
+---
+## Resubmission Comments
+
+This resubmission addresses the feedback received during the initial assessment. The following key areas have been improved:
+
+1. **Manual Testing**: A comprehensive set of test cases has been documented, focusing on core functionality as described in the user stories. These include creating, editing, and viewing travel posts, as well as user authentication and access control. Each test case outlines expected and actual outcomes, ensuring replicability.
+
+2. **Prioritization of Features**: User stories have been reprioritized using the MoSCoW model, with clear labels (P0-P2) assigned in the Kanban board to emphasize critical functionalities.
+
+3. **Technical Limitations**: During the resubmission process, challenges arose with database migration and deployment configurations in the Continuous Integration (CI) environment. After updating the database URL in Heroku, I made necessary changes to the project's settings, including updating the ALLOWED_HOSTS and configuring local access for testing. However, the preview feature never functioned correctly, despite extensive troubleshooting.
+
+This created a significant risk: attempting further changes to the code or UI/UX enhancements without a reliable testing environment could introduce bugs into the live deployment, potentially jeopardizing the project's stability. Under the time constraints, I chose to prioritize preserving the core functionality and documentation over "coding in the dark."
+
+After this submission, I plan to clone the project and resolve the deployment issues to enable safe testing and implementation of enhancements. This project holds personal significance, and I intend to refine it into a portfolio piece that fully represents my skills, creativity, and vision.
+
+I look forward to continuing to improve and expand this project, both to ensure the highest quality and to use it as part of my portfolio in the future.
+
+These updates aim to meet the assessment criteria while maintaining focus on delivering a functional and well-documented application.
+
+
+---
 ## The story
 The concept for this app initially started as a school project but soon took on personal meaning for me. I envisioned it as a space where my sister and mother could document and share their travel experiences. However, partway through the development and study process, my family experienced a significant tragedy that profoundly affected me. The emotional toll impacted my focus on this project and my studies overall, leading to delays and an extension for the submission deadline.
 
@@ -54,6 +75,7 @@ You can view the live site here: [JunketBlog](https://junketblog-6cdd776f2302.he
 - [The story](#the-story)
 - [Transparency and Future Improvements](#transparency-and-future-improvements)
 - [Agile Methodology](#agile-methodology)
+- [Manual Test Cases for User Stories](#manual-test-cases-for-user-stories)
 - [Database Diagram](#database-diagram)
 - [Wireframes](#wireframes)
 - [Features](#features)
